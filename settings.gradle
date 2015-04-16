@@ -1,0 +1,5 @@
+
+include ":Tools:ModifiedSDK:appengine-agentruntime"
+include ":Tools:ModifiedSDK:appengine-tools-api"
+
+include ":Samples:ManagedVMsLogging"
