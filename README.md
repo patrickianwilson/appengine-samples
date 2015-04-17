@@ -4,7 +4,7 @@ A (set) of sample applications that run in Google App Engine with comments descr
 How to run the basic App Engine Logging Application.
 =======================================================
 
-'''bash 
+'''
 
  cd $PROJECT_DIR
  ./gradlew appengineExplodeApp
