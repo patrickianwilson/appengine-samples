@@ -1,8 +1,12 @@
+import static org.gradle.api.JavaVersion.VERSION_1_7;
+
 apply plugin: 'war'
 apply plugin: 'appengine'
 //apply from: "${rootProject.projectDir}/config/java/webinflib.gradle"
 //apply from: "${rootProject.projectDir}/config/java/smartjava.gradle"
 //apply from: "${rootProject.projectDir}/config/gradle/gcloud.gradle"
+sourceCompatibility = VERSION_1_7
+targetCompatibility = VERSION_1_7
 
 ext {
     gaeVersion = '1.9.17';

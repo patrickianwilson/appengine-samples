@@ -1,9 +1,10 @@
 package com.patrickwilson.examples.gae.mvm.config;
 
-import com.google.common.collect.ImmutableMap;
 import com.google.inject.servlet.ServletModule;
-import com.patrickwilson.examples.gae.mvm.controller.IndexResource;
-import com.sun.jersey.api.core.ResourceConfig;
+import com.patrickwilson.examples.gae.mvm.async.BackgroundThreadLoggingController;
+import com.patrickwilson.examples.gae.mvm.controller.AppEngineInternalHandler;
+import com.patrickwilson.examples.gae.mvm.controller.LoadTestResource;
+import com.patrickwilson.examples.gae.mvm.controller.LoggingResource;
 import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
 
 /**
@@ -15,7 +16,13 @@ public class WebModule extends ServletModule {
     protected void configureServlets() {
         super.configureServlets();
 
-        binder().bind(IndexResource.class);
+        binder().bind(LoggingResource.class);
+
+        binder().bind(LoadTestResource.class);
+        binder().bind(AppEngineInternalHandler.class);
+
+        binder().bind(BackgroundThreadLoggingController.class).asEagerSingleton();;
+
         serve("/*").with(GuiceContainer.class);//, ImmutableMap.of(ResourceConfig.FEATURE_DISABLE_WADL, true));
     }
 }
