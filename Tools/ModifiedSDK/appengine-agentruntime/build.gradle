@@ -1,10 +1,29 @@
 apply plugin: "java"
 
+//just needed to manage the SDK downloads
+apply plugin: 'appengine'
+
 sourceSets {
     main {
         java {
             srcDir 'src/main/java'
-            srcDir 'src/original/java'
+//            srcDir 'src/original/java'
         }
     }
 }
+
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs 'lib'
+    }
+}
+
+dependencies {
+    compile "com.google.appengine:appengine-api-1.0-sdk:$gaeVersion"
+    compile "com.google.appengine:appengine-tools-sdk:$gaeVersion"
+    compile files("lib/appengine-agent.jar", "lib/appengine-agentruntime.jar")
+    appengineSdk "com.google.appengine:appengine-java-sdk:$gaeVersion"
+
+}
+

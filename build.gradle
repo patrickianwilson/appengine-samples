@@ -8,3 +8,22 @@ buildscript {
         classpath 'com.google.appengine:gradle-appengine-plugin:1.9.17'
     }
 }
+
+
+ext {
+    gaeVersion = '1.9.17';
+    googleApiVersion = '1.17.0-rc'
+    guavaVersion = '14.0.1';
+    guiceVersion = '3.0';
+    gsonVersion = '2.2.4';
+    httpClientVersion = '4.2.2'
+    injectVersion = '1';
+    jerseyVersion = '1.17.1';
+    jodaTimeVersion = '2.2';
+    servletApiVersion = '2.5';
+    slf4jVersion = '1.6.6';
+    thymeleafVersion = '2.0.16';
+    objectifyVersion = '4.0rc1'
+    apacheCommonsVersion = '3.1'
+
+}

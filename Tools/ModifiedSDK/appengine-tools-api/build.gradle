@@ -1,11 +1,29 @@
 apply plugin: "java"
 
+//just needed to manage the SDK downloads
+apply plugin: 'appengine'
 
 sourceSets {
     main {
         java {
             srcDir 'src/main/java'
-            srcDir 'src/original/java'
+//            srcDir 'src/original/java'
         }
     }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "com.google.appengine:appengine-api-1.0-sdk:$gaeVersion"
+    compile "com.google.appengine:appengine-tools-sdk:$gaeVersion"
+    appengineSdk "com.google.appengine:appengine-java-sdk:$gaeVersion"
+
+}
+
+
+task explodedOriginal(dependsOn: compileJava) {
+    println("Repackaging...")
 }
