@@ -2,6 +2,7 @@ package com.patrickwilson.examples.gae.mvm.controller;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 /**
@@ -16,6 +17,7 @@ public class AppEngineInternalHandler {
      */
     @Path("/start")
     @GET
+    @Produces("text/plain")
     public Response start() {
         return Response.ok().build();
     }
@@ -27,6 +29,7 @@ public class AppEngineInternalHandler {
      */
     @Path("/stop")
     @GET
+    @Produces("text/plain")
     public Response stop() {
         return Response.ok().build();
     }
@@ -37,7 +40,20 @@ public class AppEngineInternalHandler {
      */
     @Path("/health")
     @GET
+    @Produces("text/plain")
     public Response isHealthy() {
         return Response.ok().build();
     }
+
+
+    /**
+     * "warmup" the instance...
+     * @return
+     */
+    @Path("/warmup")
+    @GET
+    public Response warmup() {
+        return Response.ok().build();
+    }
+
 }

@@ -15,9 +15,16 @@
             <target-utilization>0.5</target-utilization>
         </cpu-utilization>
     </automatic-scaling>
-    <!--<admin-console>-->
-        <!--<page name="Appstats" url="/appstats/stats"/>-->
-    <!--</admin-console>-->
+
+
+
+    <!--<automatic-scaling>-->
+        <!--<min-idle-instances>4</min-idle-instances>-->
+        <!--<max-idle-instances>automatic</max-idle-instances>-->
+        <!--<min-pending-latency>automatic</min-pending-latency>-->
+        <!--<max-pending-latency>automatic</max-pending-latency>-->
+    <!--</automatic-scaling>-->
+
     <vm>true</vm>
 
 </appengine-web-app>

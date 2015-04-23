@@ -24,7 +24,13 @@ repositories {
 }
 
 dependencies {
-    compile "javax.ws.rs:jsr311-api:1.1.1"
+
+
+    compile("org.jboss.resteasy:resteasy-guice:3.0.6.Final") {
+        exclude group: 'javassist'
+    }
+    //this dependecy order seems to matter,.
+//    compile "javax.ws.rs:jsr311-api:1.1.1"
 
 
     compile "org.slf4j:slf4j-jdk14:1.7.5"
@@ -49,7 +55,7 @@ dependencies {
     */
 
     // App Engine SDK - for the Gradle Appengine Plugin
-        appengineSdk "com.google.appengine:appengine-java-sdk:$gaeVersion"
+    appengineSdk "com.google.appengine:appengine-java-sdk:$gaeVersion"
 
     //App Engine java dependencies
     compile "com.google.appengine:appengine-api-1.0-sdk:$gaeVersion"
@@ -69,20 +75,21 @@ dependencies {
     compile "com.google.inject.extensions:guice-servlet:$guiceVersion"
     compile "com.google.inject.extensions:guice-multibindings:$guiceVersion"
     compile "com.google.inject:guice:$guiceVersion";
-    compile 'javax.servlet:servlet-api:2.5';
+    compile 'javax.servlet:javax.servlet-api:3.0.1';
 
     /**
      * JAX RS WS depedencies for Jersey.
      */
-    compile "com.sun.jersey:jersey-core:$jerseyVersion"
-    compile "com.sun.jersey:jersey-client:$jerseyVersion"
-    compile "com.sun.jersey:jersey-server:$jerseyVersion"
-    compile "com.sun.jersey:jersey-servlet:$jerseyVersion"
-    compile "javax.servlet:servlet-api:$servletApiVersion"
-    compile "org.thymeleaf:thymeleaf:$thymeleafVersion"
+
+//    compile "com.sun.jersey:jersey-core:$jerseyVersion"
+//    compile "com.sun.jersey:jersey-client:$jerseyVersion"
+//    compile "com.sun.jersey:jersey-server:$jerseyVersion"
+//    compile "com.sun.jersey:jersey-servlet:$jerseyVersion"
+//    compile "javax.servlet:servlet-api:$servletApiVersion"
+//    compile "org.thymeleaf:thymeleaf:$thymeleafVersion"
 
     /* add Google Guice as a dependency injection engine for Jersey */
-    compile "com.sun.jersey.contribs:jersey-guice:$jerseyVersion"
+//    compile "com.sun.jersey.contribs:jersey-guice:$jerseyVersion"
 
 
     compile "com.google.http-client:google-http-client-gson:$googleApiVersion"

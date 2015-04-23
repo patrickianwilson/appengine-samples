@@ -1,11 +1,12 @@
 package com.patrickwilson.examples.gae.mvm.config;
 
+import org.jboss.resteasy.plugins.server.servlet.FilterDispatcher;
+import org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher;
 import com.google.inject.servlet.ServletModule;
 import com.patrickwilson.examples.gae.mvm.async.BackgroundThreadLoggingController;
 import com.patrickwilson.examples.gae.mvm.controller.AppEngineInternalHandler;
 import com.patrickwilson.examples.gae.mvm.controller.LoadTestResource;
 import com.patrickwilson.examples.gae.mvm.controller.LoggingResource;
-import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
 
 /**
  * Created by pwilson on 4/16/15.
@@ -14,15 +15,13 @@ public class WebModule extends ServletModule {
 
     @Override
     protected void configureServlets() {
-        super.configureServlets();
 
-        binder().bind(LoggingResource.class);
+        bind(LoggingResource.class).asEagerSingleton();
+        bind(LoadTestResource.class).asEagerSingleton();
+        bind(AppEngineInternalHandler.class).asEagerSingleton();
 
-        binder().bind(LoadTestResource.class);
-        binder().bind(AppEngineInternalHandler.class);
+        bind(FilterDispatcher.class).asEagerSingleton();
 
-        binder().bind(BackgroundThreadLoggingController.class).asEagerSingleton();;
-
-        serve("/*").with(GuiceContainer.class);//, ImmutableMap.of(ResourceConfig.FEATURE_DISABLE_WADL, true));
+        filter("/*").through(FilterDispatcher.class);
     }
 }
